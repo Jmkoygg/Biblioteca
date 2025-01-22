@@ -1,4 +1,5 @@
 import userServices from '../services/userServices.js';
+import usersRepository from '../repositories/usersRepository.js';
 
 async function createUserController(req, res){
     const newUser = req.body;
