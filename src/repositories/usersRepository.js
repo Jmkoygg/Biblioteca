@@ -19,7 +19,7 @@ function createUserRepository(newUser) {
                 VALUES (?, ?, ?, ?)
                 `,
       [name, email, password, avatar],
-      (err) => {
+      function (err) {
         if (err) {
           reject(err);
         } else {

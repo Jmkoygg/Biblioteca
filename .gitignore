@@ -1,2 +1,3 @@
 /node_modules/
-/library_bd
+.env
+library_db.sqlite
