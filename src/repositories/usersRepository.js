@@ -97,7 +97,7 @@ function updateUserRepository(user, id) {
         query += `${field} = ?, `;
         VALUES.push(user[field]);
       }
-    })
+    });
     query = query.slice(0, -2);
     query += ` WHERE id = ?`;
     VALUES.push(id);
