@@ -6,13 +6,13 @@ import { loanSchema } from "../schema/loanSchema.js";
 const router = Router();
 
 router.post(
-  "/loans",
+  "/",
   validate(loanSchema),
   loanController.createLoanController
 );
-router.get("/loans", loanController.findAllLoansController);
-router.get("/loans/:id", validateLoanId, loanController.findByIdLoanController);
-router.delete("/loans/:id", validateLoanId, loanController.deleteLoanController);
+router.get("/", loanController.findAllLoansController);
+router.get("/:id", validateLoanId, loanController.findByIdLoanController);
+router.delete("/:id", validateLoanId, loanController.deleteLoanController);
 
 
 

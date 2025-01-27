@@ -1,12 +1,10 @@
-import express from 'express';
-import userRoutes from './src/routes/userRoutes.js';
-import bookRoutes from './src/routes/bookRoutes.js';
-import loanRoutes from './src/routes/loanRouters.js'
+import express from "express";
+import { routers } from "./src/routes/index.js";
+import "./src/services/cronService.js";
+
 const app = express();
 app.use(express.json());
-app.use(userRoutes);
-app.use(bookRoutes);
-app.use(loanRoutes)
+app.use(routers);
 
 const port = process.env.PORT || 3000;
 
