@@ -5,8 +5,8 @@ db.run(`CREATE TABLE IF NOT EXISTS loans (
     userId INTEGER,
     bookId INTEGER,
     dueDate DATE,
-    FOREING KEY (userId) REFERENCES users(id),
-    FOREING KEY (bookId) REFERENCES books(id)
+    FOREIGN KEY (userId) REFERENCES users(id),
+    FOREIGN KEY (bookId) REFERENCES books(id)
     )`);
 
 function createLoanRepository(userId, bookId, dueDate) {
@@ -35,8 +35,32 @@ function findAllLoansRepository() {
     });
   });
 }
+function findLoanByIdRepository(loanId) {
+  return new Promise((resolve, reject) => {
+    db.get(`SELECT * FROM loans WHERE id = ?`, [loanId], (err, rows) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(rows);
+      }
+    });
+  });
+}
+function deleteLoanRepository(loanId) {
+  return new Promise((resolve, reject) => {
+    db.get(`DELETE FROM loans WHERE id = ?`, [loanId], function (err) {
+      if (err) {
+        reject(err);
+      } else {
+        resolve({ message: "Loan deleted successfuly", loanId });
+      }
+    });
+  });
+}
 
 export default {
   createLoanRepository,
   findAllLoansRepository,
+  findLoanByIdRepository,
+  deleteLoanRepository,
 };
